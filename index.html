@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17142b">
+  <title>Tung Tung Sahur: Apocalipsis en el Desierto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="cabinet" aria-label="Videojuego Tung Tung Sahur">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>PIXEL DELIRIO <b>STUDIOS</b></span></div>
+      <div class="top-actions">
+        <span class="status-pill"><i></i> SISTEMA DE REALIDAD: DUDOSO</span>
+        <button class="icon-button" id="soundToggle" aria-label="Silenciar sonido" title="Activar o silenciar sonido">♫ <span id="soundLabel">SONIDO ON</span></button>
+      </div>
+    </header>
+
+    <section class="game-shell">
+      <div class="canvas-wrap" id="canvas-wrap">
+        <canvas id="game" width="960" height="540" aria-label="Área de juego"></canvas>
+
+        <div class="hud" id="hud" hidden>
+          <div class="hud-left">
+            <div class="hud-card health-card"><span class="hud-label">INTEGRIDAD DEL PROTAGONISTA</span><div class="health-row"><span class="heart">♥</span><div class="bar"><i id="healthFill"></i></div><b id="healthText">100</b></div></div>
+            <div class="hud-card stage-card"><span class="hud-label">CAPÍTULO</span><strong id="stageName">EL DESPERTAR</strong></div>
+          </div>
+          <div class="hud-right"><div class="hud-card objective-card"><span class="hud-label">MISIÓN DE DUDOSA IMPORTANCIA</span><strong id="objective">Derrota a los NPCs</strong></div><div class="hud-card score-card"><span class="hud-label">CAOS</span><strong id="score">0000</strong></div></div>
+          <button class="icon-button pause-button" id="pauseButton" aria-label="Pausar juego">Ⅱ PAUSA</button>
+          <div class="boss-hud" id="bossHud" hidden><div class="boss-name">EL GRAN DEBATE <span>PROGRESO ARGUMENTAL</span></div><div class="boss-bar"><i id="bossFill"></i></div></div>
+        </div>
+
+        <div class="menu-screen screen" id="mainMenu">
+          <div class="menu-spark spark-a">✦</div><div class="menu-spark spark-b">✧</div>
+          <div class="menu-content">
+            <div class="eyebrow"><span>UNA AVENTURA</span><i></i><span>DE PRESUPUESTO EMOCIONAL</span></div>
+            <h1>TUNG TUNG SAHUR <em>APOCALIPSIS EN EL DESIERTO</em></h1>
+            <p class="tagline" id="tagline">El destino de las medialunas está en tus manos.</p>
+            <div class="menu-buttons"><button class="primary-button" id="playButton"><span>▶</span> JUGAR <small>COMENZAR EL CAOS</small></button><button class="secondary-button" id="instructionsButton">INSTRUCCIONES</button><button class="secondary-button" id="creditsButton">CRÉDITOS</button></div>
+            <div class="menu-footer"><span>HECHO CON <b>100% MÁS TRACTORES</b> DE LO RECOMENDADO</span><span>↑↓←→ NO HACEN NADA. PRUEBA A / D.</span></div>
+          </div>
+          <div class="menu-character-label">TUNG TUNG<br><b>SAHUR</b><span>★ NIVEL DE DRAMA: 11</span></div>
+          <div class="version-tag">EDICIÓN ARENA INFINITA · v1.0</div>
+        </div>
+
+        <div class="modal screen" id="instructionsScreen" hidden>
+          <div class="modal-card"><button class="close-button" data-close="instructionsScreen" aria-label="Cerrar">×</button><div class="modal-kicker">MANUAL PARA PERSONAS VALIENTES (O DESPISTADAS)</div><h2>¿CÓMO SE JUEGA?</h2>
+            <div class="instruction-grid"><div><kbd>A</kbd><kbd>D</kbd><p>Moverse por el desierto</p></div><div><kbd>W</kbd><span>o</span><kbd>SPACE</kbd><p>Saltar con física cuestionable</p></div><div><kbd>J</kbd><p>Blandir el bastón dramático</p></div><div><kbd>ESC</kbd><p>Pausar y reflexionar</p></div></div>
+            <p class="modal-note">Fase 1: ahuyenta a la fauna de oficina. Fase 2: neutraliza tractores con energía de meme. Fase 3: gana un debate esquivando micrófonos y eligiendo contraargumentos. Los botones táctiles también funcionan.</p><button class="primary-button compact" data-close="instructionsScreen">ENTENDIDO, SUPONGO</button>
+          </div>
+        </div>
+
+        <div class="modal screen" id="creditsScreen" hidden><div class="modal-card"><button class="close-button" data-close="creditsScreen" aria-label="Cerrar">×</button><div class="modal-kicker">UNA PRODUCCIÓN DEL CAOS</div><h2>CRÉDITOS</h2><p class="credits-art">✦ UN BASTÓN · TRES TRACTORES · CERO CERTEZAS ✦</p><p>Protagonista: Tung Tung Sahur<br>Dirección agrícola: los tractores<br>Debate: una caricatura satírica y ficticia<br>Música: osciladores con demasiada confianza<br>Arte: Canvas y pura imaginación pixelada</p><p class="modal-note">Ningún tractor real fue convencido durante la producción de este videojuego.</p><button class="primary-button compact" data-close="creditsScreen">VOLVER</button></div></div>
+
+        <div class="modal screen" id="pauseScreen" hidden><div class="modal-card pause-card"><div class="modal-kicker">EL UNIVERSO ESPERA</div><h2>PAUSA TÉCNICA</h2><p>El desierto pidió un minuto para procesar lo ocurrido.</p><button class="primary-button compact" id="resumeButton">SEGUIR CON EL ABSURDO</button><button class="secondary-button" id="pauseMenuButton">VOLVER AL MENÚ</button></div></div>
+
+        <div class="modal screen" id="transitionScreen" hidden><div class="transition-card"><span class="transition-icon">✦</span><p class="modal-kicker">CAMBIO DE REALIDAD</p><h2 id="transitionTitle">EL SECTOR AGRÍCOLA HA SIDO DESACTIVADO.</h2><button class="primary-button compact" id="continueButton">CONTINUAR →</button></div></div>
+
+        <div class="ending screen" id="endingScreen" hidden><div class="ending-copy"><span class="ending-kicker" id="endingKicker">FINAL GANADOR</span><h2 id="endingTitle">EL AMOR HA DERROTADO AL ABSURDO.</h2><p id="endingSubtitle">ENDING A: EL AMOR TRIUNFA.</p><div class="ending-actions"><button class="primary-button compact" id="endingMenuButton">VOLVER AL MENÚ</button><button class="secondary-button" id="againButton">JUGAR OTRA VEZ</button></div></div></div>
+
+        <div class="touch-controls" id="touchControls" hidden>
+          <div class="touch-group"><button data-control="left" aria-label="Mover a la izquierda">◀</button><button data-control="right" aria-label="Mover a la derecha">▶</button></div>
+          <div class="touch-group"><button data-control="jump" aria-label="Saltar">↟</button><button data-control="attack" aria-label="Atacar">✦</button></div>
+        </div>
+        <div class="debate-controls" id="debateControls" hidden><span>ELIGE TU MODO DE PENSAR:</span><button data-argument="0">📎 DATOS SOSPECHOSAMENTE ESPECÍFICOS</button><button data-argument="1">🧠 ¿Y SI RESPIRAMOS?</button><button data-argument="2">🪇 OBJECIÓN: VIBRACIONES</button></div>
+      </div>
+      <footer class="game-footer"><span><i class="footer-dot"></i> <b>EN VIVO</b> DESDE NINGÚN LUGAR EN PARTICULAR</span><span>FÍSICA APROBADA POR UN CACTUS <b>✦</b></span><span class="footer-controls">A/D MOVER <i>·</i> W/SPACE SALTAR <i>·</i> J ATAQUE <i>·</i> ESC PAUSA</span></footer>
+    </section>
+    <div class="cabinet-bottom"><span>NO ES UN SIMULADOR. ES UNA EXPERIENCIA.</span><span>◆ ◆ ◆</span><span>RESPIRA. EL TRACTOR TAMBIÉN.</span></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
